@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  mailcow:
+    image: mailcow/mailcow-dockerized:latest
+    ports:
+      - "25:25"
+      - "587:587" 
+      - "993:993"
+      - "995:995"
+      - "80:80"
+      - "443:443"
+    environment:
+      - MAILCOW_HOSTNAME=${RAILWAY_PUBLIC_DOMAIN:-localhost}
+    volumes:
+      - mailcow-data:/opt/mailcow-dockerized
+volumes:
+  mailcow-data:
